@@ -1,6 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Pokemon } from '../pokemon';
 import { PokeStoreService } from '../poke-store.service';
+import { Subscription } from 'rxjs';
+
 
 
 @Component({
@@ -8,17 +10,20 @@ import { PokeStoreService } from '../poke-store.service';
   templateUrl: './poke-list.component.html',
   styleUrls: ['./poke-list.component.css']
 })
-export class PokeListComponent implements OnInit {
+export class PokeListComponent implements OnInit, OnDestroy {
 
   list?: Pokemon[];
+
+  listSubscription?: Subscription;
+
 
   constructor(private server: PokeStoreService) { }
 
   ngOnInit(): void {
-    this.getPokemons();
+    this.listSubscription = this.server.current$.subscribe(data => this.list = data);
   }
-  getPokemons() {
-    this.server.getAllPokes().subscribe(data => this.list = data);
+  ngOnDestroy(): void {
+    this.listSubscription?.unsubscribe();
   }
 
 }
