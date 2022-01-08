@@ -15,7 +15,12 @@ export class PokeStoreService {
   private apiURL = 'https://pokeapi.co/api/v2/pokemon/'
 
   private __pokemons: Pokemon[] = [];
+
   public current$ = new BehaviorSubject<Pokemon[]>([]);
+
+  private list = true;
+
+  public list$ = new BehaviorSubject<boolean>(this.list);
 
   httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -38,7 +43,7 @@ export class PokeStoreService {
 
         };
         return poke;
-      })
+      }), (catchError(this.handleError<Pokemon>('getOne')))
     )
   }
 
@@ -63,10 +68,9 @@ export class PokeStoreService {
     )
   }
 
-  containsPoke(poke: Pokemon) {
-    let name = poke.name.toLowerCase;
-    let list = this.__pokemons.filter(data => { data.name.toLocaleLowerCase === name });
-    return list.length > 0 ? true : false;
+  listLength() {
+    let list = this.current$.value
+    return list.length;
   }
 
   private handleError<T>(operation = 'operation', result?: T) {

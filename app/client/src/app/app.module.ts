@@ -7,14 +7,12 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { PokeListComponent } from './poke-list/poke-list.component';
-import { SearchNavComponent } from './search-nav/search-nav.component';
 import { FormComponent } from './form/form.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     PokeListComponent,
-    SearchNavComponent,
     FormComponent
   ],
   imports: [

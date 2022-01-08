@@ -1,4 +1,50 @@
-<form class="form" [formGroup]="newPoke" (ngSubmit)="onSubmit()">
-  <input id="name" formControlName="name" type="text" placeholder="Get a new one!">
-  <button class=" submit" type="submit">Gotcha!</button>
-</form>
+<div class="div_form">
+  <form class="form" [formGroup]="pokeName" (ngSubmit)="onSubmit()">
+    <input class="search" id="name" formControlName="name" placeholder="Search a Pokemon and Get a new one!" type="text"
+      (keyup)="onKeyUp($event)">
+    <button class=" submit" [disabled]="!validPoke" type="submit">Gotcha!</button>
+  </form>
+</div>
+<div class="new" [hidden]="!posted">
+  <h2>FOUND!!!</h2>
+  <div class="poke">
+    <div class="front">
+      <div class="card">
+        <h3>{{model$.value.id}}</h3>
+        <img src={{model$.value.front}}>
+        <p>{{model$.value.name}}</p>
+      </div>
+      <button class="catch" type="button" (click)="catch()">CATCH</button>
+    </div>
+    <div class="back">
+      <div class="card">
+        <h3>{{model$.value.id}}</h3>
+        <img src={{model$.value.back}}>
+        <p>{{model$.value.name}}</p>
+      </div>
+      <button class="free" type="button" (click)="free()">Let it Go</button>
+    </div>
+  </div>
+</div>
+<div class="old" [hidden]="listed">
+  <h3>you alredy have this one</h3>
+  <div class="poke">
+    <div class="front">
+      <div class="card">
+        <h3>{{model$.value.id}}</h3>
+        <img src={{model$.value.front}}>
+        <p>{{model$.value.name}}</p>
+      </div>
+    </div>
+    <div class="back">
+      <div class="card">
+        <h3>{{model$.value.id}}</h3>
+        <img src={{model$.value.back}}>
+        <p>{{model$.value.name}}</p>
+      </div>
+    </div>
+  </div>
+  <div>
+    <button class="back_to_list" type="button" (click)="backList()">back to List</button>
+  </div>
+</div>

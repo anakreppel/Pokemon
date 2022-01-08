@@ -1,0 +1,88 @@
+.div_form{
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+}
+.search{
+  width: 240px;
+  height: 30px;
+  min-width: 120px;
+}
+.new::before,.new::after{
+  margin: 10px 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+}
+.old::before,.old::after{
+  margin: 10px 40px;
+  display: flex;
+  flex-direction:column;
+  justify-content: space-around;
+  align-items: center;
+
+}
+
+.poke{
+  display:flex;
+  flex-wrap: wrap;
+  flex-direction:start;
+}
+
+.front, .back{
+  margin: 5px 20px;
+  width: 120px;
+}
+.card{
+  display:flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  box-shadow: 0 0 10px 5px #2e232e;
+  width: 120px;
+  height: 180px;
+  background-color: black;
+}
+
+button:enabled{
+  width: 120px;
+  height: 30px;
+  box-shadow: 0 0 5px 1px #2e232e;
+  font-family: SF PRO display;
+  font-weight: 800;
+  color: #6c4e88;
+  background: #000000;
+  border: none;
+  border-radius: 8px;
+}
+button:disabled{
+  width: 120px;
+  height: 30px;
+  box-shadow: 0 0 5px 1px #2e232e;
+  font-family: SF PRO display;
+  font-weight: 800;
+  color: #6c4e88;
+  background:gray;
+  border: none;
+  border-radius: 8px;
+}
+.submit {
+  margin: 20px;
+}
+
+.free, .catch, .back_to_list{
+  margin-top: 20px;
+}
+
+
+
+h3, h2 {
+  font-family: SF PRO display;
+  color: #6c4e88;
+  font-weight: 1000;
+}
+p{
+  font-family: SF PRO display;
+  color: #6c4e88;
+}

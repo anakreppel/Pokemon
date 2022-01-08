@@ -16,6 +16,8 @@ export class PokeListComponent implements OnInit, OnDestroy {
 
   listSubscription?: Subscription;
 
+  listed = !this.server.list$.value;
+
 
   constructor(private server: PokeStoreService) { }
 
